@@ -9,5 +9,6 @@
 <body>
     <h1>Welcome to the Tea Shop</h1>
     <p>Discover a variety of teas from around the world.</p>
+    <a href="{{route('tea.show')}}">View Tea</a>
 </body>
 </html>
