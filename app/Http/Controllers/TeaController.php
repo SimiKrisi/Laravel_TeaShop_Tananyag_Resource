@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tea;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests\StoreTeaRequest;
+use App\Services\TeaService;
 
 class TeaController extends Controller
 {
@@ -12,7 +16,8 @@ class TeaController extends Controller
     public function index()
     {
         
-        return view('home');
+        $teas = Tea::all()->where('nev', '!=', null)->orderBy('nev', 'asc');
+        return view('home', compact('teas'));
     }
 
     /**
@@ -23,12 +28,21 @@ class TeaController extends Controller
         //
     }
 
+    
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTeaRequest $request, TeaService $teaService)
     {
-        //
+        
+        $tea = $teaService->createTea($request->validated());
+
+        // Válasz
+        
+        return response()->json([
+            'message' => 'Tea sikeresen hozzáadva!', 
+            'tea' => $tea
+        ]);
     }
 
     /**

@@ -8,9 +8,9 @@
 </head>
 <body>
 
-    <a href="{{route("contact")}}">Contact</a>
-    <a href="{{route("menu")}}">Menu</a>
-    <a href="{{route("home")}}">Home</a>
-    <h1>Home</h1>
+    @foreach ($teas as $tea)
+        <p>{{ $tea['nev'] }} - {{ $tea['ar_huf'] }} HUF</p>
+        
+    @endforeach
 </body>
 </html>
