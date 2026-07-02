@@ -16,7 +16,31 @@ class TeaController extends Controller
     public function index()
     {
         
-        $teas = Tea::all()->where('nev', '!=', null)->orderBy('nev', 'asc');
+        $teas = [
+            [
+                'nev' => 'Zöld tea',
+                'ar_huf' => 1500,
+                'leiras' => 'Frissítő zöld tea, mely frissíti a testet és az elmét.',
+                'kulonleges-e' => true,
+                'discount' => 10
+                ],
+            [
+                'nev' => 'Fekete tea',
+                'ar_huf' => 1200,
+                
+                'leiras' => 'Erős fekete tea, mely erősítő hatású.',
+                'kulonleges-e' => false,
+                'discount' => null
+            ],
+            [
+                'nev' => 'Gyümölcs tea',
+                'ar_huf' => 1000,
+                'leiras' => 'Édes gyümölcs tea, mintha a nyár ízeit kortyolnánk.',
+                'kulonleges-e' => false,
+                'discount' => 5
+            ],
+        ] ;   
+        
         return view('home', compact('teas'));
     }
 
