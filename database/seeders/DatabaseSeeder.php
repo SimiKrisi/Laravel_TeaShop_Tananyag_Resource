@@ -25,5 +25,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TeaSeeder::class,
         ]);
+        $this->call([
+            UserSeeder::class,
+        ]);
+        $this->call([
+            OrderSeeder::class,
+        ]);
+        $this->call([
+            OrderItemSeeder::class,
+        ]);
     }
 }

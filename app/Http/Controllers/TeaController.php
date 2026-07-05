@@ -10,38 +10,73 @@ use App\Services\TeaService;
 
 class TeaController extends Controller
 {
+
+#section('crud')
+    //   CRUD
+    //   Create, Read, Update, Delete
+      
+    //   create
+    //   Tea::create([
+    //         'name' => 'Black Tea',
+    //         'image_path' => 'images/black_tea.jpg',
+    //         'price' => 10.99,
+    //         'specification' => 'A strong and robust black tea.',
+    //         'stock' => 100,
+    //         'discount' => 0.1,
+    //     ]);
+
+
+    //   update
+    //   $tea = Tea::where('id', 1)->first();
+    //   $tea->update([
+    //  'name' => 'Updated Black Tea',
+    //  'price' => 11.99,
+    //  ]);
+
+
+
+    //  delete 
+    //  $tea = Tea::where('id', 1)->first();
+    //  $tea->delete();
+     
+
+
+    // $tea = Tea::where('id', 1)->first();
+    //     $tea->price = 11.99;
+    //     $tea->save();
+
+        // Tea::updateOrCreate(
+        //     ['name' => 'Green Tea'],
+        //     [
+        //         'image_path' => 'images/green_tea.jpg',
+        //         'price' => 9.99,
+        //         'specification' => 'A refreshing green tea.',
+        //         'stock' => 80,
+        //         'discount' => 0.05,
+        //     ]
+        // );
+        // Tea::firstOrCreate(
+        //     ['name' => 'Green Tea'],
+        //     [
+        //         'image_path' => 'images/green_tea.jpg',
+        //         'price' => 9.99,
+        //         'specification' => 'A refreshing green tea.',
+        //         'stock' => 80,
+        //         'discount' => 0.05,
+        //     ]
+        // );
+#endsection('crud');
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         
-        $teas = [
-            [
-                'nev' => 'Zöld tea',
-                'ar_huf' => 1500,
-                'leiras' => 'Frissítő zöld tea, mely frissíti a testet és az elmét.',
-                'kulonleges-e' => true,
-                'discount' => 10
-                ],
-            [
-                'nev' => 'Fekete tea',
-                'ar_huf' => 1200,
-                
-                'leiras' => 'Erős fekete tea, mely erősítő hatású.',
-                'kulonleges-e' => false,
-                'discount' => null
-            ],
-            [
-                'nev' => 'Gyümölcs tea',
-                'ar_huf' => 1000,
-                'leiras' => 'Édes gyümölcs tea, mintha a nyár ízeit kortyolnánk.',
-                'kulonleges-e' => false,
-                'discount' => 5
-            ],
-        ] ;   
-        
-        return view('home', compact('teas'));
+
+
+
+        // $teas = Tea::where('name','Black Tea')->first();
+        // return response()->json($teas);
     }
 
     /**
