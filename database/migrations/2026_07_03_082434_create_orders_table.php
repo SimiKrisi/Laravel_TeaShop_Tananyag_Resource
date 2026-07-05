@@ -8,8 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * id	user_id	shipping_fee	total_amount	personal name	address	phone_number	comment	status	(timestamps)
-
+     * 
      */
     public function up(): void
     {

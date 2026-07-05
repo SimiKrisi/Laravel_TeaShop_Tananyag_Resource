@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //address	phone_number	is_admin	cart_data
+        // Add new columns to the users table
         Schema::table('users', function (Blueprint $table) {
             $table->json('address')->nullable();
             $table->string('phone_number')->nullable();

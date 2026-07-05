@@ -73,10 +73,6 @@ class TeaController extends Controller
     {
         
 
-
-
-        // $teas = Tea::where('name','Black Tea')->first();
-        // return response()->json($teas);
     }
 
     /**

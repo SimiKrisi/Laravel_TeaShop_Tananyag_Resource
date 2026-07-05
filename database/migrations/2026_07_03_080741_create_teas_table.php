@@ -8,8 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * id	name	image_path	price	specification	stock	discount	(timestamps)
-
+     * 
      */
     public function up(): void
     {
@@ -23,15 +22,7 @@ return new class extends Migration
             $table->decimal('discount', 4, 2)->default(0);
             $table->timestamps();
 
-
-
-
-
-
-
-
-
-
+#section for reference and notes, 
             // $table->id(); //bigint unsigned auto_increment not_null primary_key
 
             // #szöveges mezők
@@ -63,6 +54,7 @@ return new class extends Migration
             // #Időbélyegek
 
             // $table->timestamps(); #created_at, updated_at
+#endsection
         });
     }
 

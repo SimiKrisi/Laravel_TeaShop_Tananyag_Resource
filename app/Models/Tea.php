@@ -26,6 +26,7 @@ class Tea extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+#section: Relationships
     //N:N 
     //cimke - tea
     //  tea - lehet több cimkéje
@@ -42,5 +43,5 @@ class Tea extends Model
     // $tea = Tea::find(1);
     // $tagsname = $tea->tags()->name();
     // $teas = Tea::with('tags')->get();
-
+#endsection
 }

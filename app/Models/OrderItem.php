@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class OrderItem extends Model
 {
     use HasFactory;
-    //tea->orderitem 1:n
-    //id	order_id	tea_id	quantity	fixed_price
+   
+    
     protected $fillable = [
         'order_id',
         'tea_id',
         'quantity',
         'fixed_price'
     ];
+     //tea->orderitem 1:n
     public function tea()
     {
         return $this->belongsTo(Tea::class);

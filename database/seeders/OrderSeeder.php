@@ -9,14 +9,6 @@ class OrderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * 'user_id',
-        'shipping_fee',
-        'total_amount',
-        'personal_name',
-        'address',
-        'phone_number',
-        'comment',
-        'status'
      */
     public function run(): void
     {

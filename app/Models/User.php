@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-// id	email	password	address	phone_number	is_admin	cart_data	(timestamps)
 
 
 #[Fillable(['name', 'email', 'password', 'address', 'phone_number', 'is_admin', 'cart_data'])]

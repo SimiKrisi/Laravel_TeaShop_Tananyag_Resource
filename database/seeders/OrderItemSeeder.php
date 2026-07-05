@@ -9,7 +9,7 @@ class OrderItemSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * order_id	tea_id	quantity	fixed_price
+     * 
      */
     public function run(): void
     {
