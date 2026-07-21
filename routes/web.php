@@ -22,5 +22,5 @@ use App\Http\Controllers\MonthlyReportController;
 // MenuController
 
 
-Route::resource('teas', TeaController::class);
+Route::resource('/admin/teas', TeaController::class);
 Route::get('/monthly-report', MonthlyReportController::class)->name('monthly_report');

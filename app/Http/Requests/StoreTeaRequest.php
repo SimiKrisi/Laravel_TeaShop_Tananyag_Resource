@@ -25,10 +25,17 @@ class StoreTeaRequest extends FormRequest
     {
         
         return [
-            'nev' => 'required|string|max:255',
-            'ar_huf' => 'required|numeric|min:100',
-            'tipus' => 'required|string',
-            'leiras' => 'nullable|string'
+            // 'nev' => 'required|string|max:255',
+            // 'ar_huf' => 'required|numeric|min:100',
+            // 'tipus' => 'required|string',
+            // 'leiras' => 'nullable|string'
+            'name' => 'required|string|max:150',
+            'image_path' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'specification' => 'required|string|max:500',
+            'stock' => 'required|integer|min:0',
+            'discount' => 'nullable|numeric|min:0|max:100',
+
         ];
     }
 }

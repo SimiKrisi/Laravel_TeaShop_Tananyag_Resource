@@ -67,11 +67,13 @@ class TeaController extends Controller
         // );
 #endsection('crud');
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. 
+     * HTTp GET /teas
      */
     public function index()
     {
-        
+        $teas = Tea::all();
+        return view('tea.index', compact('teas'));
 
     }
 
@@ -80,7 +82,7 @@ class TeaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tea.create');
     }
 
     
@@ -89,23 +91,26 @@ class TeaController extends Controller
      */
     public function store(StoreTeaRequest $request, TeaService $teaService)
     {
-        
-        $tea = $teaService->createTea($request->validated());
+        Tea::create($request->validated());
+        return redirect()->route('teas.index')->with('success', 'Tea sikeresen hozzáadva!');
+        // $tea = $teaService->createTea($request->validated());
 
-        // Válasz
+        // // Válasz
         
-        return response()->json([
-            'message' => 'Tea sikeresen hozzáadva!', 
-            'tea' => $tea
-        ]);
+        // return response()->json([
+        //     'message' => 'Tea sikeresen hozzáadva!', 
+        //     'tea' => $tea
+        // ]);
     }
 
     /**
      * Display the specified resource.
+     * get /teas/{id}
      */
     public function show(string $id)
     {
-        //
+        $tea = Tea::findOrFail($id);
+        return view('tea.show', compact('tea'));
     }
 
     /**
@@ -113,7 +118,7 @@ class TeaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('tea.edit', ['tea' => Tea::findOrFail($id)]);
     }
 
     /**
@@ -121,7 +126,9 @@ class TeaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tea = Tea::findOrFail($id);
+        $tea->update($request->only(['name', 'image_path', 'price', 'specification', 'stock', 'discount']));
+        return redirect()->route('teas.index')->with('success', 'Tea sikeresen frissítve!');
     }
 
     /**
@@ -129,6 +136,8 @@ class TeaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tea = Tea::findOrFail($id);
+        $tea->delete();
+        return redirect()->route('teas.index')->with('success', 'Tea sikeresen törölve!');
     }
 }
