@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Tea;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\StoreTeaRequest;
+use App\Http\Requests\UpdeateTeaRequest;
 use App\Services\TeaService;
+use App\Http\Requests\UpdateTeaRequest;
 
 class TeaController extends Controller
 {
@@ -91,6 +93,7 @@ class TeaController extends Controller
      */
     public function store(StoreTeaRequest $request, TeaService $teaService)
     {
+       
         Tea::create($request->validated());
         return redirect()->route('teas.index')->with('success', 'Tea sikeresen hozzáadva!');
         // $tea = $teaService->createTea($request->validated());
@@ -103,6 +106,13 @@ class TeaController extends Controller
         // ]);
     }
 
+
+    // Flash üzenetek
+    // success: Sikeres művelet
+    // error: Hiba történt
+    // warning: Figyelmeztetés
+    // info: Információ
+
     /**
      * Display the specified resource.
      * get /teas/{id}
@@ -112,6 +122,9 @@ class TeaController extends Controller
         $tea = Tea::findOrFail($id);
         return view('tea.show', compact('tea'));
     }
+    // public function show(Tea $tea){
+    //     return view('tea.show', compact('tea'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -124,10 +137,12 @@ class TeaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdeateTeaRequest $request, string $id)
     {
+        
+        // dd($request->validated());
         $tea = Tea::findOrFail($id);
-        $tea->update($request->only(['name', 'image_path', 'price', 'specification', 'stock', 'discount']));
+        // $tea->update($request->validated());
         return redirect()->route('teas.index')->with('success', 'Tea sikeresen frissítve!');
     }
 
@@ -137,7 +152,14 @@ class TeaController extends Controller
     public function destroy(string $id)
     {
         $tea = Tea::findOrFail($id);
-        $tea->delete();
-        return redirect()->route('teas.index')->with('success', 'Tea sikeresen törölve!');
+        // $tea->delete();
+        // return redirect()->route('teas.index')->with('success', 'Tea sikeresen törölve!');
+        try{
+            $tea->delete();
+        }catch(\Exception $e){
+            Log::error('Hiba történt a tea törlésekor: ' . $e->getMessage());
+            return back()->with('error', 'Hiba történt a tea törlésekor. Kérjük, próbálja újra később.');
+
+        }
     }
 }

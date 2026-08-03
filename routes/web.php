@@ -21,6 +21,14 @@ use App\Http\Controllers\MonthlyReportController;
 
 // MenuController
 
+// Route::get('/admin/teas', [TeaController::class, 'index'])->name('teas.index');
+// Route::get('/admin/teas/create', [TeaController::class, 'create'])->name('teas.create');
+// Route::post('/admin/teas', [TeaController::class, 'store'])->name('teas.store');
+// Route::get('/admin/teas/{tea}', [TeaController::class, 'show'])->name('teas.show');
+// Route::get('/admin/teas/{tea}/edit', [TeaController::class, 'edit'])->name('teas.edit');
+// Route::patch('/admin/teas/{tea}', [TeaController::class, 'update'])->name('teas.update');
+// Route::delete('/admin/teas/{tea}', [TeaController::class, 'destroy'])->name('teas.destroy');
+
 
 Route::resource('/admin/teas', TeaController::class);
 Route::get('/monthly-report', MonthlyReportController::class)->name('monthly_report');

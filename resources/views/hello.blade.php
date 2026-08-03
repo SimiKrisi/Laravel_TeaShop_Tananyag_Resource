@@ -8,7 +8,16 @@
 </head>
 <body>
     <h1>Welcome to the Tea Shop</h1>
-    <p>Discover a variety of teas from around the world.</p>
-    <a href="{{route('tea.show')}}">View Tea</a>
+    {{-- 8.fejezet --}}
+    {{-- <form action="/form" method="POST">
+        @csrf
+        <div>
+            <label for="title">Cím:</label>
+            <input type="text" name="title" id="title">
+        </div>
+        <div>   
+            <button type="submit">Mentés</button>
+        </div>
+    </form> --}}
 </body>
 </html>

@@ -17,6 +17,9 @@
         <div>
             <label for="price">Price:</label>
             <input class="bg-gray-400 text-black" type="decimal" id="price" name="price" step="0.01" required>
+            @error('price')
+                <div class="text-red-500">{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <label for="specification">Specification:</label>
