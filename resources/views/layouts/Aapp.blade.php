@@ -28,8 +28,8 @@
     @if (session('error'))
         <div class="error">{{ session('error') }}</div>
     @endif
-
-    @if ($errors->any())
+--}}
+    {{-- @if ($errors->any())
         <div class="error">
         <ul>
             @foreach ($errors->all() as $error)
@@ -37,7 +37,7 @@
             @endforeach
         </ul>
         </div>
-    @endif --}}
+    @endif  --}}
     <main class="container mx-auto py-8">
         @yield('content')
     </main>

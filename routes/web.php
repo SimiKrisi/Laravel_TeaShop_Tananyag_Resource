@@ -17,9 +17,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/admin/teas', [TeaController::class, 'index'])->name('teas.index');
-    
-    
-    
     Route::middleware('is_admin')->group(function(){
         Route::post('/admin/teas', [TeaController::class, 'store'])->name('teas.store');
         Route::get('/admin/teas/create', [TeaController::class, 'create'])->name('teas.create');

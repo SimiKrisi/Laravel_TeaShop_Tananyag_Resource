@@ -72,10 +72,24 @@ class TeaController extends Controller
      * Display a listing of the resource. 
      * HTTp GET /teas
      */
-    public function index()
+    public function index(Request $request)
     {
-        $teas = Tea::all();
+        $teas = Tea::query()
+        ->when($request->filled('search'),fn($query) =>
+            $query->where('name', 'like', '%'.$request->search .'%')
+        )
+        ->when($request->filled('on_sale'),fn($query) =>
+            $query->where('discount', '>', 0)
+        )
+        ->when($request->filled('in_stock'),fn($query)=>
+            $query->where('stock', '>', 0)
+        )->paginate(5);
+        
+        
         return view('tea.index', compact('teas'));
+       
+        // $teas = Tea::all();
+        // return view('tea.index', compact('teas'));
 
     }
 
@@ -93,9 +107,15 @@ class TeaController extends Controller
      */
     public function store(StoreTeaRequest $request, TeaService $teaService)
     {
+        $validatedData= $request->validated();
+        $path = $request->file('image_path')->store('teas', 'public');
+        $validatedData['image_path'] = $path;
+        Tea::create($validatedData);
+        return redirect()->route('teas.index')->with('success', 'Tea sikeresen hozzáadva');
         
-        Tea::create($request->validated());
-        return redirect()->route('teas.index')->with('success', 'Tea sikeresen hozzáadva!');
+        // dd($request->file('image_path')->extension());
+        // Tea::create($request->validated());
+        // return redirect()->route('teas.index')->with('success', 'Tea sikeresen hozzáadva!');
         // $tea = $teaService->createTea($request->validated());
 
         // // Válasz
