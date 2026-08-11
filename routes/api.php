@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('teas', TeaController::class);
+Route::name('api')->apiResource('teas', TeaController::class);

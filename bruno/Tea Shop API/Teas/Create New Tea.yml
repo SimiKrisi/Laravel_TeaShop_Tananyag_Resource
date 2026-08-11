@@ -10,12 +10,14 @@ http:
     type: json
     data: |-
       {
-        "name": "Black Tea2",
-        "image_path": "images\/black_tea.jpg",
-        "price": 29.99,
-        "specification": "Premium black tea leaves.",
-        "stock": 50,
-        "discount": 3,
+
+          "name": "Black Tea",
+          "image_path":"valami",
+          "price": 29.99,
+          "specification":"semmi",
+          "stock": 1,
+          "discount":0
+       
       }
   auth: inherit
 
@@ -24,4 +26,3 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-​

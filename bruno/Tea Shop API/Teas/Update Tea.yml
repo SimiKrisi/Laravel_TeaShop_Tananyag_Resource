@@ -1,10 +1,17 @@
 info:
   name: Update Tea
   type: http
+  seq: 1
 
 http:
   method: PATCH
   url: "{{base_url}}/teas/1"
+  body:
+    type: json
+    data: |-
+      { 
+        "stock" : 1
+      }
   auth: inherit
 
 settings:
@@ -12,4 +19,3 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-​

@@ -4,7 +4,7 @@
 <div>
     <h1>Tea List</h1>
     
-    <a href="{{ route('teas.create') }}">Create New Tea</a>
+    <a href="{{route('teas.create')}}">Create New Tea</a>
     <table>
         <thead>
             <tr>

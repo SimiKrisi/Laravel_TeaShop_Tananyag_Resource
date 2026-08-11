@@ -84,7 +84,7 @@ class TeaController extends Controller
      */
     public function create()
     {
-        return view('tea.create');
+        return view('tea.create')->with(200);
     }
 
     
@@ -93,7 +93,7 @@ class TeaController extends Controller
      */
     public function store(StoreTeaRequest $request, TeaService $teaService)
     {
-       
+        
         Tea::create($request->validated());
         return redirect()->route('teas.index')->with('success', 'Tea sikeresen hozzáadva!');
         // $tea = $teaService->createTea($request->validated());
@@ -142,7 +142,7 @@ class TeaController extends Controller
         
         // dd($request->validated());
         $tea = Tea::findOrFail($id);
-        // $tea->update($request->validated());
+        $tea->update($request->validated());
         return redirect()->route('teas.index')->with('success', 'Tea sikeresen frissítve!');
     }
 
@@ -161,5 +161,6 @@ class TeaController extends Controller
             return back()->with('error', 'Hiba történt a tea törlésekor. Kérjük, próbálja újra később.');
 
         }
+        return redirect()->route('teas.index')->with(['success', 'tea sikeresen törölve'],204);
     }
 }

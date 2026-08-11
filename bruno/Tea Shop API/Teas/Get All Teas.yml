@@ -1,6 +1,7 @@
 info:
   name: Get All Teas
   type: http
+  seq: 1
 
 http:
   method: GET

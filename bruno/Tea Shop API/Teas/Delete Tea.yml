@@ -1,10 +1,11 @@
 info:
   name: Delete Tea
   type: http
+  seq: 1
 
 http:
   method: DELETE
-  url: "{{base_url}}/teas/20"
+  url: "{{base_url}}/teas/26"
   auth: inherit
 
 settings:

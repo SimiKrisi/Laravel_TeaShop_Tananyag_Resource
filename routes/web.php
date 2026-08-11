@@ -16,11 +16,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('/admin/teas', TeaController::class)->only('index', 'show');
+    Route::get('/admin/teas', [TeaController::class, 'index'])->name('teas.index');
+    
+    
+    
+    Route::middleware('is_admin')->group(function(){
+        Route::post('/admin/teas', [TeaController::class, 'store'])->name('teas.store');
+        Route::get('/admin/teas/create', [TeaController::class, 'create'])->name('teas.create');
+        Route::put('/admin/teas/{tea}', [TeaController::class, 'update'])->name('teas.update');
+        Route::delete('/admin/teas/{tea}', [TeaController::class, 'destroy'])->name('teas.destroy');
+        Route::get('/admin/teas/{tea}/edit', [TeaController::class, 'edit'])->name('teas.edit');
+    });
+    Route::get('/admin/teas/{tea}', [TeaController::class, 'show'])->name('teas.show');
 });
-Route::middleware(['is_admin', 'auth'])->group(function(){
-    Route::resource('/admin/teas', TeaController::class)->except('index', 'show');
-});
+
+// Route::middleware(['is_admin', 'auth'])->group(function(){
+//     Route::resource('/admin/teas', TeaController::class)->except('index', 'show');
+// });
 
 require __DIR__.'/auth.php';
 
