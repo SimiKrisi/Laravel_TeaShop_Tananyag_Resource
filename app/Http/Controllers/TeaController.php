@@ -107,6 +107,7 @@ class TeaController extends Controller
      */
     public function store(StoreTeaRequest $request, TeaService $teaService)
     {
+        
         $validatedData= $request->validated();
         $path = $request->file('image_path')->store('teas', 'public');
         $validatedData['image_path'] = $path;

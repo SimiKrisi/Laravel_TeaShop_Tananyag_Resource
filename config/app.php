@@ -123,4 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'tax_rate' => env('TEASHOP_TAX_RATE',27),
 ];

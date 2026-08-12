@@ -7,6 +7,8 @@ use App\Http\Requests\StoreTeaRequest;
 use Illuminate\Http\Request;
 use App\Models\Tea;
 use App\Http\Resources\TeaResource;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class TeaController extends Controller
 {
@@ -22,11 +24,28 @@ class TeaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTeaRequest $request)
+    public function store(Request $request)
     {
+        try{
+            $tea = Tea::create($request->all()); //szükséges validáció
+            Log::info('Új termék jött létre a rendszerben.', [
+                'tea_id' => $tea->id,
+                'tea_name' => $tea->name,
+            ]);
+            return response()->json($tea, 201);
+        }
+        catch(\Throwable $e){
+            Log::error('Kritikus hiba a tea mentése során', [
+                'exception_message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+            return response()->json([
+                'error'=> 'Váratlan hiba történt a tea mentése során.',
+                'message'=>$e->getMessage()
+            ],500);
+        }
         
-        $tea = Tea::create($request->validated());
-        return response()->json($tea, 201);
     }
 
     /**

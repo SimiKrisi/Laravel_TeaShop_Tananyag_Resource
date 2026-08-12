@@ -12,7 +12,7 @@ http:
       {
 
           "name": "Black Tea",
-          "image_path":"valami",
+          "image_path":"",
           "price": 29.99,
           "specification":"semmi",
           "stock": 1,
@@ -26,3 +26,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+​
